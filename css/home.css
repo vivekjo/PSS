@@ -1,0 +1,228 @@
+@CHARSET "ISO-8859-1";
+
+#content{
+	background-color: transparent;	
+	height: 650px;
+}
+#header{
+	display:none;
+}
+#content-wrapper{
+	width: 100%;
+	height: 650px;
+}
+
+#leftpanel{
+	float:left;
+	width: 150px;
+	height: 650px;
+	background-color: #F5F8FB;	
+}
+#rightpanel{
+	margin-left:3px;
+	float:left;
+	width: 847px;
+	height: 650px;
+	background-color: #FFFFFF;
+}
+.panel-title{
+	background: url('../images/blue-bg.png') repeat-x scroll 0 0 #B9C9FE;
+	height: 13px;
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 4px 10px 10px;
+	color: #003399;
+}
+
+#panel-wrapper{
+	//width: 100%;	
+	padding-left: 50px;
+	padding-top:20px;
+}
+#selectpanel-wrapper{
+	width: 602px;
+	height: 450px;
+	overflow:auto;
+	margin-top: 1px;
+	margin-left: 25px;
+	border: 1px solid #e1e2e3;
+	background-color: #FFFFFF;
+}
+
+#selectpanel-header-wrapper{
+	width: 602px;
+	height: 26px;
+	margin-left: 25px;
+	border: 1px solid #e1e2e3;
+	background-color: #FFFFFF;
+}
+
+#selectpanel-footer-wrapper{
+	width: 602px;
+	height: 43px;
+	margin-left: 25px;
+	border-bottom: 1px solid #e1e2e3;
+	background-color: #FFFFFF;
+}
+
+#grouppanel-header{
+	float:left;
+	width:200px;
+	height: 25px;
+	border-right: 1px solid #e1e2e3;
+}
+#itempanel-header{
+	float:left;
+	width:200px;
+	height: 25px;
+	border-right: 1px solid #e1e2e3;
+}
+#subitempanel-header{
+	float:left;
+	width:200px;
+	height: 25px;
+	//border-right: 1px solid #e1e2e3;
+}
+
+#grouppanel-footer{
+	float:left;
+	width:200px;
+	height: 15px;
+	margin-top: 7px;
+}
+#itempanel-footer{
+	float:left;
+	width:200px;
+	height: 15px;
+	margin-top: 7px;
+}
+#subitempanel-footer{
+	float:left;
+	width:200px;
+	height: 13px;
+	margin-top: 7px;
+}
+
+#grouppanel{
+	float:left;
+	width:200px;
+	height: 450px;
+	overflow: auto;
+	border-right: 1px solid #e1e2e3;
+}
+#itempanel{
+	float:left;
+	width:200px;
+	height: 450px;
+	overflow: auto;
+	border-right: 1px solid #e1e2e3;
+}
+#subitempanel{
+	float:left;
+	width:200px;
+	height: 450px;
+	overflow: auto;
+	//border-right: 1px solid #e1e2e3;
+}
+
+.panel-header{
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	height: 20px;
+	background: url("../images/ui-bg.png") repeat scroll 0 0 #EEEEEE;
+	color: #003399;
+	padding: 8px 10px 4px 10px;
+	border-bottom: 1px solid #C0C0C0;
+}
+.panel-footer{
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 11px;
+	height: 10px;
+	color: #FFFFFF;
+	padding-left: 20px;
+}
+.panel-element{
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 11px;
+	height: 14px;
+	color: #666699;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px dotted #e1e2e3;
+	padding: 8px 10px 4px 10px;
+}
+
+.leaf-panel-element{
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 11px;
+	height: 14px;
+	color: #666699;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px dotted #e1e2e3;
+	padding: 8px 10px 4px 10px;
+}
+
+.leaf-panel-element:hover{
+	background: none #E8EDFF center right no-repeat;
+	color: #101010;
+	font-weight: bold;
+	cursor:pointer;
+}
+
+.panel-element:hover{
+	background: url('../images/right_arrow.png') #E8EDFF center right no-repeat;
+	color: #101010;
+	font-weight: bold;
+	cursor:pointer;
+}
+
+.selected-panel-element{
+	background: url('../images/right_arrow.png') #E8EDFF center right no-repeat;
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	height: 15px;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #e1e2e3;
+	padding: 8px 10px 4px 10px;
+	color: #101010;
+}
+.selected-leaf-panel-element{
+	background: none #E8EDFF center right no-repeat;
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	height: 15px;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #e1e2e3;
+	padding: 8px 10px 4px 10px;
+	color: #101010;
+	cursor:pointer;
+}
+
+#content-title{
+	background: url("../images/ui-bg.png") repeat scroll 0 0 #EEEEEE;
+	height: 13px;
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 10px 12px;
+	color: #101010;
+}
+
+.transparency {
+	-moz-border-radius: 10px 10px 10px 10px;
+	z-index: 100;
+}
+
+.blurscreen{
+	height: 435px;
+	width: 950px;
+	filter: alpha(opacity=55);
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity:0.5;
+	display: none;
+	z-index: 10;
+	
+}

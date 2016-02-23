@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+#logindialog-wrapper{
+	width:400px;
+	height: 200px;
+	margin-top: 120px;
+	margin-left:275px;
+	padding:3px 3px;
+	border: 1px solid #b1c2fe;
+}
+
+#logindialog{
+	min-width:300px;
+	height: 150px;
+	//margin:3px;
+	padding:25px 50px;
+	border:0px;
+	background-color: #E8EDFF;	
+}
+
+#login-table{
+	font-family: "Lucida Grande";
+	font-size: 11px;
+	color: #003399;
+}
+
+.panel-title{
+	background: url('../images/blue-bg.png') repeat-x scroll 0 0 #B9C9FE;
+	height: 13px;
+	font-family: Lucida Grande,Tahoma, Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 4px 10px 10px;
+	color: #003399;
+}
+
+.txtInputField{
+	font-size:11px;
+	font-weight: bold;
+	background-color:transparent;
+	border:0px solid #3B5908;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.txtInputField:focus{
+	border-bottom: 1px solid #273771;
+}

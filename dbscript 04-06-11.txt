@@ -1,0 +1,340 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 04, 2011 at 11:26 AM
+-- Server version: 5.1.36
+-- PHP Version: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `pssdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounthead`
+--
+
+CREATE TABLE IF NOT EXISTS `accounthead` (
+  `acchead_id` int(5) NOT NULL AUTO_INCREMENT,
+  `acchead_name` varchar(75) NOT NULL,
+  `parent_channel_id` int(5) NOT NULL,
+  PRIMARY KEY (`acchead_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `channel`
+--
+
+CREATE TABLE IF NOT EXISTS `channel` (
+  `channel_id` int(5) NOT NULL AUTO_INCREMENT,
+  `channel_name` varchar(50) NOT NULL,
+  `channel_type` varchar(10) NOT NULL,
+  PRIMARY KEY (`channel_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company`
+--
+
+CREATE TABLE IF NOT EXISTS `company` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `op_pg` float NOT NULL,
+  `op_lpg` float NOT NULL,
+  `op_silver` float NOT NULL,
+  `op_cash` float NOT NULL,
+  `cl_pg` float NOT NULL,
+  `cl_lpg` float NOT NULL,
+  `cl_silver` float NOT NULL,
+  `cl_cash` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daybook`
+--
+
+CREATE TABLE IF NOT EXISTS `daybook` (
+  `txn_id` int(10) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `category_id` int(5) NOT NULL,
+  `acchead_id` int(5) NOT NULL,
+  `pg` float NOT NULL,
+  `lpg` float NOT NULL,
+  `silver` float NOT NULL,
+  `cash` float NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`txn_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE IF NOT EXISTS `employee` (
+  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `employee_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`employee_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inoutdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `inoutdetails` (
+  `inoutdetails_id` int(5) NOT NULL AUTO_INCREMENT,
+  `inout_id` int(5) NOT NULL,
+  `group_id` int(5) NOT NULL,
+  `item_id` int(5) NOT NULL,
+  `subitem_id` int(5) NOT NULL,
+  `pcs` int(5) NOT NULL,
+  `gwt` float NOT NULL,
+  `nwt` float NOT NULL,
+  `ctpure` float NOT NULL,
+  `amount` float NOT NULL,
+  PRIMARY KEY (`inoutdetails_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inoutentry`
+--
+
+CREATE TABLE IF NOT EXISTS `inoutentry` (
+  `inout_id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `issuer_id` int(5) NOT NULL,
+  `bearer_id` int(5) NOT NULL,
+  `receiver_id` int(5) NOT NULL,
+  `location_id` int(5) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  PRIMARY KEY (`inout_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item`
+--
+
+CREATE TABLE IF NOT EXISTS `item` (
+  `item_id` int(5) NOT NULL AUTO_INCREMENT,
+  `item_name` varchar(75) NOT NULL,
+  `parent_group_id` int(5) NOT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itemgroup`
+--
+
+CREATE TABLE IF NOT EXISTS `itemgroup` (
+  `group_id` int(5) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(25) NOT NULL,
+  PRIMARY KEY (`group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE IF NOT EXISTS `location` (
+  `location_id` int(11) NOT NULL AUTO_INCREMENT,
+  `location_name` varchar(75) NOT NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE IF NOT EXISTS `payment` (
+  `txn_id` int(10) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `supplier_id` int(5) NOT NULL,
+  `voucher_no` varchar(15) NOT NULL,
+  `payment_mode` varchar(15) NOT NULL,
+  `amount` float NOT NULL,
+  `adjust_with` varchar(15) NOT NULL,
+  `adjust_amount` float NOT NULL,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`txn_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase`
+--
+
+CREATE TABLE IF NOT EXISTS `purchase` (
+  `txn_id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `supplier_id` int(5) NOT NULL,
+  `billno` int(20) NOT NULL,
+  PRIMARY KEY (`txn_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchasedetails`
+--
+
+CREATE TABLE IF NOT EXISTS `purchasedetails` (
+  `txn_id` int(5) NOT NULL,
+  `group_id` int(5) NOT NULL,
+  `item_id` int(5) NOT NULL,
+  `subitem_id` int(5) NOT NULL,
+  `gwt` float NOT NULL,
+  `nwt` float NOT NULL,
+  `24ctpure` float NOT NULL,
+  `maintain_metal_as` varchar(15) NOT NULL,
+  `maintain_metal_value` float NOT NULL,
+  `mc` float NOT NULL,
+  `maintain_mc_as` varchar(15) NOT NULL,
+  `maintain_mc_value` float NOT NULL,
+  `payment_days` int(3) NOT NULL,
+  `last_payment_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rate`
+--
+
+CREATE TABLE IF NOT EXISTS `rate` (
+  `rate_id` int(11) NOT NULL AUTO_INCREMENT,
+  `metal` varchar(25) NOT NULL,
+  `rate` double NOT NULL,
+  PRIMARY KEY (`rate_id`),
+  UNIQUE KEY `metal` (`metal`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subitem`
+--
+
+CREATE TABLE IF NOT EXISTS `subitem` (
+  `subitem_id` int(5) NOT NULL AUTO_INCREMENT,
+  `subitem_name` varchar(75) NOT NULL,
+  `parent_item_id` int(5) NOT NULL,
+  PRIMARY KEY (`subitem_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `supplier_id` int(5) NOT NULL AUTO_INCREMENT,
+  `supplier_name` varchar(75) NOT NULL,
+  `op_pg` float NOT NULL,
+  `op_lpg` float NOT NULL,
+  `op_silver` float NOT NULL,
+  `op_cash` double NOT NULL,
+  `cl_pg` float NOT NULL,
+  `cl_lpg` float NOT NULL,
+  `cl_silver` float NOT NULL,
+  `cl_cash` double NOT NULL,
+  PRIMARY KEY (`supplier_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suspensedetails`
+--
+
+CREATE TABLE IF NOT EXISTS `suspensedetails` (
+  `suspensedetails_id` int(5) NOT NULL AUTO_INCREMENT,
+  `suspense_id` int(5) NOT NULL,
+  `group_id` int(5) NOT NULL,
+  `item_id` int(5) NOT NULL,
+  `subitem_id` int(5) NOT NULL,
+  `pcs` int(5) NOT NULL,
+  `type` varchar(25) NOT NULL,
+  `gwt` float NOT NULL,
+  `nwt` float NOT NULL,
+  `ctpure` float NOT NULL,
+  `amount` float NOT NULL,
+  PRIMARY KEY (`suspensedetails_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suspenseentry`
+--
+
+CREATE TABLE IF NOT EXISTS `suspenseentry` (
+  `suspense_id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `issuer_id` int(5) NOT NULL,
+  `bearer_id` int(5) NOT NULL,
+  `receiver_id` int(5) NOT NULL,
+  `location_id` int(5) NOT NULL,
+  `mode` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `ref_suspense_id` int(5) NOT NULL,
+  PRIMARY KEY (`suspense_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transfer`
+--
+
+CREATE TABLE IF NOT EXISTS `transfer` (
+  `txn_id` int(10) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `supplier_id` int(5) NOT NULL,
+  `from_type` varchar(20) NOT NULL,
+  `from_amount` float NOT NULL,
+  `to_type` varchar(20) NOT NULL,
+  `to_amount` float NOT NULL,
+  `description` varchar(50) NOT NULL,
+  PRIMARY KEY (`txn_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(5) NOT NULL AUTO_INCREMENT,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `usertype` varchar(25) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
